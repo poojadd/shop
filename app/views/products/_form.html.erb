@@ -19,21 +19,25 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+    <% if params[:type] == 'Pen' %>
   <div class="field">
     <%= f.label :color %><br>
     <%= f.text_field :color %>
   </div>
+        <% end %>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.check_box :status %>
+    <%#= f.number_field :status %>
   </div>
   <div class="field">
     <%= f.label :inward_date %><br>
     <%= f.text_field :inward_date %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%#= f.label :type %><br>
+    <%#= f.text_field :type %>
+    <%= f.hidden_field :type, :value => params[:type] %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
