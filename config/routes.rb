@@ -16,6 +16,8 @@ Shop::Application.routes.draw do
 
   # Example resource route with options:
      resources :products
+  resources :pens, controller: 'products', type: 'Pen'
+  resources :notebooks, controller: 'products', type: 'Notebook'
   #     member do
   #       get 'short'
   #       post 'toggle'
