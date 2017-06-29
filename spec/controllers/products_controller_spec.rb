@@ -9,7 +9,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it "assigns @products" do
-      product = Product.create
+      product = Product.create(:name=>'pen', :price=>10, :color=>'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen')
       get :index
       expect(assigns(:products)).to eq([product])
     end
@@ -19,4 +19,5 @@ RSpec.describe ProductsController, type: :controller do
       expect(response).to render_template("index")
     end
   end
+
 end
