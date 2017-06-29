@@ -156,4 +156,21 @@ RSpec.describe ProductsController, type: :controller do
 
     end
   end
+  #describe "DELETE destroy" do
+  #  before do
+  #    @product_params =
+  #        {name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen'
+  #        }
+  #    @new_paams={name:'New Pen'}
+  #  end
+  #  it "destroys the requested product" do
+  #    product = Product.create(@product_params)
+  #    expect { delete :destroy, id: product }.should change(Product, :count).by(-1)
+  #  end
+  #  it "redirects to table index page" do
+  #    product = Product.create(@product_params)
+  #    delete :destroy, id: product
+  #    response.should redirect_to(assigns[:product])
+  #  end
+  #end
 end
