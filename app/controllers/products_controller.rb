@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @product = Product.new(:type=>params[:type]).becomes(Product)
   end
 
   # GET /products/1/edit
@@ -24,14 +24,16 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(product_params)#.becomes(Product)
+    @type = params[:product][:type]
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @product }
+        format.html { redirect_to products_path, notice: 'Product was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @products }
       else
-        format.html { render action: 'new' }
+        @product = Product.new(product_params).becomes(Product)
+        format.html { render action: 'new', type: @product[:type] }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +44,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,7 +66,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find(params[:id]).becomes(Product)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

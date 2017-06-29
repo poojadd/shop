@@ -19,7 +19,7 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
-    <% if params[:type] == 'Pen' %>
+    <% if @product.type == 'Pen' %>
   <div class="field">
     <%= f.label :color %><br>
     <%= f.text_field :color %>
@@ -37,7 +37,7 @@
   <div class="field">
     <%#= f.label :type %><br>
     <%#= f.text_field :type %>
-    <%= f.hidden_field :type, :value => params[:type] %>
+    <%= f.hidden_field :type%>
   </div>
   <div class="field">
     <%= f.label :description %><br>

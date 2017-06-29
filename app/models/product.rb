@@ -8,5 +8,7 @@ class Product < ActiveRecord::Base
   def self.types
     %w(Pen Notebook)
   end
-
+  def self.price_sum(product_type)
+    Product.where(:type => product_type).sum(:price)
+  end
 end
