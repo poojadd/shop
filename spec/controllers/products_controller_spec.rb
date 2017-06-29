@@ -77,9 +77,9 @@ RSpec.describe ProductsController, type: :controller do
       subject {
         post :create, @product_params
       }
-      it "redirects to show page" do
+      it "redirects to index page" do
         subject
-        response.should redirect_to(assigns[:product])
+        response.should redirect_to(assigns[:products])
       end
 
       it "creates product record" do
