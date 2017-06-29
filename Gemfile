@@ -33,6 +33,10 @@ group :doc do
 end
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+
+end
+group :test do
+  gem "database_cleaner"
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
