@@ -27,7 +27,7 @@ RSpec.describe ProductsController, type: :controller do
       response.should render_template('show')
     end
     it "assigns the requested product as @product" do
-      product = Product.create(name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen')
+      product = Product.create(name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen').becomes(Product)
       get :show, {id: product.to_param}
       assigns(:product).should eq(product)
     end
@@ -55,7 +55,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it "assigns the requested product as @product" do
-      product = Product.create(name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen')
+      product = Product.create(name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen').becomes(Product)
       get :edit, {id: product}
       assigns(:product).should_not be_nil
       assigns(:product).should eq(product)
@@ -98,7 +98,7 @@ RSpec.describe ProductsController, type: :controller do
         response.should render_template('new')
       end
 
-      it "does not create person record" do
+      it "does not create product record" do
         lambda {
           post :create, @product_params
         }.should_not change(Product, :count).by(1)
@@ -156,21 +156,5 @@ RSpec.describe ProductsController, type: :controller do
 
     end
   end
-  #describe "DELETE destroy" do
-  #  before do
-  #    @product_params =
-  #        {name: 'pen', price: 10, color: 'red', status:1, inward_date:'12/12/2016',type:'Pen',description:'best pen'
-  #        }
-  #    @new_paams={name:'New Pen'}
-  #  end
-  #  it "destroys the requested product" do
-  #    product = Product.create(@product_params)
-  #    expect { delete :destroy, id: product }.should change(Product, :count).by(-1)
-  #  end
-  #  it "redirects to table index page" do
-  #    product = Product.create(@product_params)
-  #    delete :destroy, id: product
-  #    response.should redirect_to(assigns[:product])
-  #  end
-  #end
+
 end
